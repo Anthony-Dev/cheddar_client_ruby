@@ -2,7 +2,7 @@ module CheddarGetter
   class Client
     include HTTParty
     
-    base_uri "https://cheddargetter.com/"
+    base_uri "https://getcheddar.com/"
     attr_accessor :product_code, :product_id, :username, :password
     
     #options:
@@ -26,19 +26,19 @@ module CheddarGetter
       end
     end
     
-    #https://cheddargetter.com/developers#all-plans
+    #https://getcheddar.com/developers#all-plans
     def get_plans
       do_request(:item => :plans, :action => :get)
     end
 
-    #https://cheddargetter.com/developers#single-plan
+    #https://getcheddar.com/developers#single-plan
     #
     #id_hash: {:code => plan_code} OR {:id => plan_id}
     def get_plan(id_hash = { })
       do_request(:item => :plans, :action => :get, :id_hash => id_hash)
     end
 
-    #https://cheddargetter.com/developers#all-customers
+    #https://getcheddar.com/developers#all-customers
     #
     #Any, all, or none of this data hash can be given.
     #It just filters the returned customers
@@ -61,7 +61,7 @@ module CheddarGetter
       do_request(:item => :customers, :action => :get, :data => data)
     end
 
-    #https://cheddargetter.com/developers#all-customers
+    #https://getcheddar.com/developers#all-customers
     #
     #Any, all, or none of this data hash can be given.
     #It just filters the returned customers
@@ -83,14 +83,14 @@ module CheddarGetter
       do_request(:item => :customers, :action => :list, :data => data)
     end
     
-    #https://cheddargetter.com/developers#single-customer
+    #https://getcheddar.com/developers#single-customer
     #
     #id_hash: {:code => customer_code} OR {:id => customer_id}
     def get_customer(id_hash = { })
       do_request(:item => :customers, :action => :get, :id_hash => id_hash)
     end
     
-    #https://cheddargetter.com/developers#add-customer
+    #https://getcheddar.com/developers#add-customer
     #
     #data:
     #
@@ -167,7 +167,7 @@ module CheddarGetter
       do_request(:item => :customers, :action => :new, :data => data)
     end
     
-    #https://cheddargetter.com/developers#update-customer-subscription
+    #https://getcheddar.com/developers#update-customer-subscription
     #
     #id_hash: {:code => customer_code} OR {:id => customer_id}
     #
@@ -211,7 +211,7 @@ module CheddarGetter
       do_request(:item => :customers, :action => :edit, :id_hash => id_hash, :data => data)
     end
     
-    #https://cheddargetter.com/developers#update-customer
+    #https://getcheddar.com/developers#update-customer
     #
     #id_hash: {:code => customer_code} OR {:id => customer_id}
     #
@@ -231,19 +231,19 @@ module CheddarGetter
       do_request(:item => :customers, :action => "edit-customer", :id_hash => id_hash, :data => data)
     end
     
-    #https://cheddargetter.com/developers#delete-customer
+    #https://getcheddar.com/developers#delete-customer
     #
     #id_hash: {:code => customer_code} OR {:id => customer_id}
     def delete_customer(id_hash = { })
       do_request(:item => :customers, :action => :delete, :id_hash => id_hash)
     end
     
-    #https://cheddargetter.com/developers#delete-all-customers
+    #https://getcheddar.com/developers#delete-all-customers
     def delete_all_customers(time = Time.now.to_i)
       do_request(:item => :customers, :action => "delete-all/confirm/#{time}")
     end
     
-    #https://cheddargetter.com/developers#update-subscription
+    #https://getcheddar.com/developers#update-subscription
     #
     #id_hash: {:code => customer_code} OR {:id => customer_id}
     #
@@ -268,14 +268,14 @@ module CheddarGetter
       do_request(:item => :customers, :action => "edit-subscription", :id_hash => id_hash, :data => data)
     end
     
-    #https://cheddargetter.com/developers#cancel-subscription
+    #https://getcheddar.com/developers#cancel-subscription
     #
     #id_hash: {:code => customer_code} OR {:id => customer_id}
     def cancel_subscription(id_hash = { })
       do_request(:item => :customers, :action => :cancel, :id_hash => id_hash)
     end
     
-    #https://cheddargetter.com/developers#add-item-quantity
+    #https://getcheddar.com/developers#add-item-quantity
     #
     #id_hash: 
     #
@@ -294,7 +294,7 @@ module CheddarGetter
                  :data => data, :add_item_id => true)
     end
     
-    #https://cheddargetter.com/developers#remove-item-quantity
+    #https://getcheddar.com/developers#remove-item-quantity
     #
     #id_hash: 
     #
@@ -313,7 +313,7 @@ module CheddarGetter
                  :data => data, :add_item_id => true)
     end
     
-    #https://cheddargetter.com/developers#set-item-quantity
+    #https://getcheddar.com/developers#set-item-quantity
     #
     #id_hash: 
     #
@@ -330,7 +330,7 @@ module CheddarGetter
                  :data => data, :add_item_id => true)
     end
     
-    #https://cheddargetter.com/developers#add-charge
+    #https://getcheddar.com/developers#add-charge
     #
     #id_hash: {:code => customer_code} OR {:id => customer_id}
     #
@@ -346,7 +346,7 @@ module CheddarGetter
       do_request(:item => :customers, :action => "add-charge", :id_hash => id_hash, :data => data)
     end
 
-     #https://cheddargetter.com/developers#delete-charge
+     #https://getcheddar.com/developers#delete-charge
      #
      #id_hash: {:code => customer_code} OR {:id => customer_id}
      #
@@ -359,7 +359,7 @@ module CheddarGetter
        do_request(:item => :customers, :action => "delete-charge", :id_hash => id_hash, :data => data)
      end
 
-    # https://cheddargetter.com/developers#one-time-invoice 
+    # https://getcheddar.com/developers#one-time-invoice 
     # 
     # id_hash: {:code => customer_code} OR {:id => customer_id}
     # 
@@ -382,7 +382,7 @@ module CheddarGetter
       do_request(:item => :invoices, :action => 'new', :id_hash => id_hash, :data => data)
     end    
 
-    #http://support.cheddargetter.com/faqs/marketing-metrics/marketing-metrics
+    #http://support.getcheddar.com/faqs/marketing-metrics/marketing-metrics
     #
     #Convenience wrapper of setcookie() for setting a persistent cookie 
     #containing marketing metrics compatible with CheddarGetter's marketing metrics tracking.
